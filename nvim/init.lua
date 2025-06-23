@@ -4,6 +4,8 @@ require("config.lazy")
 
 require("neo-tree").setup({
   filesystem = {
-    follow_current_file = false,     -- Disables automatic reveal of the current file
+    follow_current_file = {
+      enable = false, -- Disables automatic reveal of the current file
+    }
   },
 })

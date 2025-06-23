@@ -7,8 +7,14 @@ local keymap = vim.keymap -- for conciseness
 -- Delete some default keymaps of LazyVim
 -- keymap.del('n', '<leader>/')
 -- keymap.del('n', '<leader><space>')
--- keymap.del('n', '<C-_>')
+keymap.del('n', '<C-_>')
+keymap.del('n', '<C-/>')
 -- keymap.del('v', '<C-_>')
+
+-- Map 0 to move to the first non-blank character of the line
+keymap.set('n', '0', '^', { noremap = true, silent = true })
+-- keymap.set('n', '$', 'g_', { noremap = true, silent = true })
+
 
 --Neotree
 keymap.set('n', '<C-t>', '<cmd>Neotree toggle<cr>')
@@ -19,13 +25,14 @@ keymap.set('n', '<C-q>', ':Rg<CR>', { noremap = true, silent = true })
 keymap.set('n', '<C-p>', ':Files<CR>', { noremap = true, silent = true })
 
 -- Select all
-keymap.set('n', '<C-a>', 'gg0vG$')
+keymap.set('n', '<C-a>', 'ggVG$')
 
 -- window management
 keymap.set("n", "<leader>to", ":tabnew<CR>")   -- open new tab
 keymap.set("n", "<leader>tx", ":tabclose<CR>") -- close current tab
 keymap.set("n", "<leader>tn", ":tabn<CR>")     --  go to next tabvim.
 keymap.set("n", "<leader>tp", ":tabp<CR>")     --  go to previous tab
+keymap.set("n", "<leader>w", ":FixWhitespace<CR>")     --  go to previous tab
 keymap.set("n", "Z", ":tab split<CR>")         -- zoom in
 keymap.set("n", "zz", ":tabclose<CR>")         -- zoom out
 
@@ -53,17 +60,20 @@ keymap.set("n", "<leader>C", ":Vcontroller ")
 keymap.set("n", "<leader>vv", ":Vview<CR>")
 keymap.set("n", "<leader>V", ":Vview ")
 keymap.set("n", "<leader>vm", ":Vmodel<CR>")
+keymap.set("n", "<leader>vs", ":RV<CR>")
 keymap.set("n", "<leader>M", ":Vmodel ")
 
 -- Folding
-keymap.set("n", "<leader>f1", ":set foldlevel=1<CR> ")
-keymap.set("n", "<leader>f2", ":set foldlevel=2<CR> ")
-keymap.set("n", "<leader>f3", ":set foldlevel=3<CR> ")
+keymap.set("n", "<leader>f1", ":set foldmethod=syntax<CR>:set foldlevel=1<CR> ")
+keymap.set("n", "<leader>f2", ":set foldmethod=syntax<CR>:set foldlevel=2<CR> ")
+keymap.set("n", "<leader>f3", ":set foldmethod=syntax<CR>:set foldlevel=3<CR> ")
+keymap.set("n", "<leader>f4", ":set foldmethod=syntax<CR>:set foldlevel=4<CR> ")
+keymap.set("n", "<leader>f5", ":set foldmethod=syntax<CR>:set foldlevel=5<CR> ")
 keymap.set("n", "<leader>f0", ":set foldlevel=99<CR> ")
 
 -- Copilot
 vim.api.nvim_set_keymap("i", "<C-j>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-vim.api.nvim_set_keymap("i", "<C-i>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+-- vim.api.nvim_set_keymap("i", "<C-i>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 keymap.set("i", "<C-h>", 'copilot#Previous()', { silent = true, expr = true })
 keymap.set("i", "<C-l>", 'copilot#Next()', { silent = true, expr = true })
 

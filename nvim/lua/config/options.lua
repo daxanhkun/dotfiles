@@ -47,3 +47,4 @@ opt.iskeyword:append('-')
 vim.o.mouse = ""
 vim.g.autoformat = false
 vim.g['test#strategy'] = 'dispatch' -- For Vimspec
+vim.g.lazyvim_check_order = false -- Disable lazyvim check order
